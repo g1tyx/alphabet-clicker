@@ -2,16 +2,22 @@
 var aCount;
 var buttonDiv
 var aButton;
+var aButtonDefault;
 var aUpgradeButton;
 var aCost;
 var aUpgradeDiv;
+var prestigeDiv;
+var aPrestigeCost;
 //attach element variables to DOM elements
 aCount = document.getElementById("aCount");
 buttonDiv = document.getElementById("buttonDiv");
+aButtonDefault = document.getElementById("aButton");
 aButton = document.getElementById("aButton");
 aUpgradeButton = document.getElementById("aUpgradeButton");
 aCost = document.getElementById("aCost");
 aUpgradeDiv = document.getElementById("aUpgradeDiv");
+prestigeDiv = document.getElementById("prestigeDiv");
+aPrestigeCost = document.getElementById("aPrestigeCost");
 
 //letters array
 var progress = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -22,7 +28,10 @@ var increaseAmount = 1;
 var currentLetter = 1;
 var upgradeCost = 25;
 var upgradeMultiplier = 1.15;
+var prestigeMultiplier = 10;
 var currentLetterIndex = 0;
+var prestigeCost = 5000000;
+var prestigeLevel = 1;
 
 function buttonClick(letter){
     let UpperLetter = letter.toUpperCase();
@@ -30,7 +39,7 @@ function buttonClick(letter){
     const letterToFind = (isLetter) => isLetter == UpperLetter;
 
     let indexOfLetter = progress.findIndex(letterToFind);
-    letters[letter] += (increaseAmount / (2 ** indexOfLetter));
+    letters[letter] += ((increaseAmount / (2 ** indexOfLetter)) * prestigeLevel);
 }
 
 function upgrade(letter){
@@ -79,6 +88,27 @@ function addLetterDiv(index){
     buttonDiv.appendChild(countButton);
 }
 
+function prestige(){
+    if(letters.a >= prestigeCost){
+        increaseAmount = 1;
+        currentLetter = 1;
+        upgradeCost = 25;
+        currentLetterIndex = 0;
+        prestigeLevel++;
+        buttonDiv.innerHTML = "";
+        buttonDiv.appendChild(aButtonDefault);
+        Object.keys(letters).forEach(prop => letters[prop] = 0);
+        let lowerCase = progress[0].toLowerCase();
+        let newUpgrade = "upgrade('" + lowerCase + "')";
+        aUpgradeButton.setAttribute("onclick", newUpgrade);
+        aUpgradeButton.innerHTML = "->" + progress[1];
+        aCost.innerHTML = upgradeCost + " " + progress[0];
+        prestigeCost = Math.ceil(prestigeCost * (prestigeMultiplier ** prestigeLevel));
+        aPrestigeCost.innerHTML = prestigeCost + " A";
+    }
+    
+}
+
 window.setInterval(() => {
     aCount.innerHTML = Math.floor(letters.a);
     for(let x = 0; x < progress.length; x++){
@@ -95,7 +125,7 @@ window.setInterval(() => {
     for(let x = 0; x < progress.length - 1; x++){
         let lowerLetter = progress[x].toLowerCase();
         let nextLetter = progress[x + 1].toLowerCase();
-        letters[lowerLetter] += 1 * letters[nextLetter];
+        letters[lowerLetter] += prestigeLevel * letters[nextLetter];
     }
 }, 1000);
 
