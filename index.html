@@ -1,18 +1,28 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Game</title>
+    <title>Incremental Alphabet</title>
     <style>
         body{
             margin: 10px;
             padding: 0px;
             text-align: center;
+            background-color: #041C32;
+            color: #ECB365;
         }
         button{
             margin: 0px 5px 5px 0px;
-            padding: 0px;
+            padding: 5px;
+            border: #04293A solid 2px;
+            border-radius: 12px;
+            background-color: #064663;
+            color: #ECB365;
+        }
+        button:hover{
+            background-color: #04293A;
+        }
+        h1, h2, h3, h4, h5, h6{
+            color: #ECB365;
         }
         .countButton{
             height: 3rem;
@@ -28,12 +38,17 @@
     </style>
 </head>
 <body>
+    <h1>Incremental Alphabet</h1>
     <div id="buttonDiv">
         <button id="aButton" onclick="buttonClick('a')" class="countButton"><h2><span id="aCount"></span> A</h2></button>
     </div>
     <div id="aUpgradeDiv">
         <h2>Upgrade: <span id="aCost">25 A</span></h2>
         <button id="aUpgradeButton" onclick="upgrade('a')">->B</button>
+    </div>
+    <div id="prestigeDiv">
+        <h2>Prestige: <span id="aPrestigeCost">5000000 A</span></h2>
+        <button id="aPrestigeButton" onclick="prestige()">+</button>
     </div>
     <script src="main.js"></script>
 </body>
