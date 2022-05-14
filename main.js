@@ -60,7 +60,26 @@ else{
 //global variables
 var upgradeMultiplier = 1.15;
 var prestigeMultiplier = 5;
-var metaprestigeMultiplier = 1.25;
+var metaprestigeMultiplier = 1.15;
+
+document.addEventListener("keydown", checkKey);
+
+function checkKey(key){
+    if(key.code.slice(0, 3) == "Key"){
+        let keyPressed = key.code.slice(-1).toLowerCase();
+        if(document.getElementById(keyPressed + "Button") !== null){
+            buttonClick(keyPressed);
+        }
+    }
+    if(key.code == "Space"){
+        let upgradeLetter = aUpgradeButton.getAttribute("onclick").slice(9, 10);
+        upgrade(upgradeLetter);
+    }
+    if(key.code == "Enter"){
+        prestige();
+        metaprestige();
+    }
+}
 
 function buttonClick(letter){
     let UpperLetter = letter.toUpperCase();
