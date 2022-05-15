@@ -8,6 +8,7 @@ var aCost;
 var aUpgradeDiv;
 var prestigeDiv;
 var aPrestigeCost;
+var aPrestigeButton;
 var prestigeCountText;
 var aMetaprestigeCost;
 var metaprestigeCountText;
@@ -21,6 +22,7 @@ aCost = document.getElementById("aCost");
 aUpgradeDiv = document.getElementById("aUpgradeDiv");
 prestigeDiv = document.getElementById("prestigeDiv");
 aPrestigeCost = document.getElementById("aPrestigeCost");
+aPrestigeButton = document.getElementById("aPrestigeButton");
 prestigeCountText = document.getElementById("prestigeCountText");
 aMetaprestigeCost = document.getElementById("aMetaprestigeCost");
 metaprestigeCountText = document.getElementById("metaprestigeCountText");
@@ -169,7 +171,7 @@ function prestige(){
 }
 
 function metaprestige(){
-    if(userData.prestigeLevel >= userData.metaPrestigeCost){
+    if(userData.prestigeLevel - 1 >= userData.metaPrestigeCost){
         userData.increaseAmount = 1;
         userData.currentLetter = 1;
         userData.upgradeCost = 25;
@@ -203,6 +205,15 @@ window.setInterval(() => {
     }
     prestigeCountText.innerHTML = userData.prestigeLevel - 1;
     metaprestigeCountText.innerHTML = userData.metaPrestigeLevel - 1;
+    //changes color of upgrade button if player can afford to upgrade
+    if(userData.letters[progress[userData.currentLetter - 1].toLowerCase()] >= userData.upgradeCost){
+        aUpgradeButton.style.backgroundColor = "#ECB365";
+        aUpgradeButton.style.color = "#064663";
+    }
+    else{
+        aUpgradeButton.style.backgroundColor = "#064663";
+        aUpgradeButton.style.color = "#ECB365";
+    }
 }, 10);
 
 window.setInterval(() => {
@@ -211,7 +222,15 @@ window.setInterval(() => {
         let nextLetter = progress[x + 1].toLowerCase();
         userData.letters[lowerLetter] += userData.prestigeLevel * userData.letters[nextLetter];
     }
-
+    //changes color of prestige button if player can afford to prestige
+    if(userData.letters.a >= userData.prestigeCost){
+        aPrestigeButton.style.backgroundColor = "#ECB365";
+        aPrestigeButton.style.color = "#064663";
+    }
+    else{
+        aPrestigeButton.style.backgroundColor = "#064663";
+        aPrestigeButton.style.color = "#ECB365";
+    }
     save();
 }, 1000);
 
