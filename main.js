@@ -207,12 +207,12 @@ window.setInterval(() => {
     metaprestigeCountText.innerHTML = userData.metaPrestigeLevel - 1;
     //changes color of upgrade button if player can afford to upgrade
     if(userData.letters[progress[userData.currentLetter - 1].toLowerCase()] >= userData.upgradeCost){
-        aUpgradeButton.style.backgroundColor = "#ECB365";
-        aUpgradeButton.style.color = "#064663";
+        aUpgradeButton.style.backgroundColor = "#F6DA63";
+        aUpgradeButton.style.color = "#DA2D2D";
     }
     else{
-        aUpgradeButton.style.backgroundColor = "#064663";
-        aUpgradeButton.style.color = "#ECB365";
+        aUpgradeButton.style.backgroundColor = "#DA2D2D";
+        aUpgradeButton.style.color = "#F6DA63";
     }
 }, 10);
 
@@ -224,12 +224,12 @@ window.setInterval(() => {
     }
     //changes color of prestige button if player can afford to prestige
     if(userData.letters.a >= userData.prestigeCost){
-        aPrestigeButton.style.backgroundColor = "#ECB365";
-        aPrestigeButton.style.color = "#064663";
+        aPrestigeButton.style.backgroundColor = "#F6DA63";
+        aPrestigeButton.style.color = "#DA2D2D";
     }
     else{
-        aPrestigeButton.style.backgroundColor = "#064663";
-        aPrestigeButton.style.color = "#ECB365";
+        aPrestigeButton.style.backgroundColor = "#DA2D2D";
+        aPrestigeButton.style.color = "#F6DA63";
     }
     save();
 }, 1000);
