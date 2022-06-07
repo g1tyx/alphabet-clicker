@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Soup</title>
+    <style>
+        body{
+            margin: 10px;
+            padding: 0px;
+            text-align: center;
+            background-color: #9D0B0B;
+            color: #F6DA63;
+        }
+        button{
+            margin: 0px 5px 5px 0px;
+            padding: 5px;
+            border: #9D0B0B solid 2px;
+            border-radius: 12px;
+            background-color: #DA2D2D;
+            color: #F6DA63;
+        }
+        button:hover{
+            background-color: #9D0B0B;
+        }
+        h1, h2, h3, h4, h5, h6{
+            color: #F6DA63;
+        }
+        .countButton{
+            height: 3rem;
+            width: 32%;
+            padding: 5px;
+        }
+        .countButton h2{
+            margin: 0px;
+        }
+        #aButton{
+            width: 100%;
+        }
+        #navDiv{
+            text-align: center;
+        }
+        #resetH3{
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alphabet Soup</h1>
+    <div id="navDiv">
+        <button id="resetButton" onclick="reset()"><h3 id="resetH3">reset progress</h3></button>
+        <h3>Prestige Count: <span id="prestigeCountText"></span></h3>
+        <h3>Metaprestige Count: <span id="metaprestigeCountText"></span></h3>
+    </div>
+    <div id="buttonDiv">
+        <button id="aButton" onclick="buttonClick('a')" class="countButton"><h2><span id="aCount"></span> A</h2></button>
+    </div>
+    <div id="aUpgradeDiv">
+        <h2>Upgrade: <span id="aCost">25 A</span></h2>
+        <button id="aUpgradeButton" onclick="upgrade('a')">->B</button>
+    </div>
+    <div id="prestigeDiv">
+        <h2>Prestige: <span id="aPrestigeCost">5000000 A</span></h2>
+        <button id="aPrestigeButton" onclick="prestige()">+</button>
+        <h2>Metaprestige: <span id="aMetaprestigeCost">6 Prestige</span></h2>
+        <button id="aMetaPrestigeButton" onclick="metaprestige()">++</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

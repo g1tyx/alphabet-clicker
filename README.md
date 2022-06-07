@@ -1,1 +1,2 @@
-# alphabet-clicker
+# Alphabet-Clicker
+My first incremental game
