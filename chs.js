@@ -40,7 +40,7 @@ var cnItems = {
     "Milestones": "里程碑",
     "Completed": "已完成",
     "Achievement Gotten!": "成就达成！",
-    "Alphabet Soup": "字母汤",
+    "Alphabet Soup": "字母点击器",
     "Metaprestige Count:": "元声望次数：",
     "Metaprestige:": "元声望：",
     "Prestige Count:": "声望次数：",
